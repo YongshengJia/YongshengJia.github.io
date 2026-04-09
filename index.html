@@ -16,8 +16,7 @@
       --line: #d6d9e0;
       --accent: #1d4ed8;
       --accent-soft: #eff6ff;
-      --max-width: 1180px;
-      --sidebar-width: 220px;
+      --max-width: 980px;
     }
 
     * {
@@ -90,50 +89,7 @@
     }
 
     .page-layout {
-      display: grid;
-      grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
-      gap: 2rem;
       padding: 2rem 0 4rem;
-      align-items: start;
-    }
-
-    .sidebar {
-      position: sticky;
-      top: 88px;
-      align-self: start;
-    }
-
-    .sidebar-card {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      padding: 1rem 1rem 1.1rem;
-    }
-
-    .sidebar-title {
-      margin: 0 0 0.8rem;
-      font-size: 0.95rem;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-
-    .sidebar ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    .sidebar li {
-      margin-bottom: 0.5rem;
-    }
-
-    .sidebar a {
-      color: var(--text);
-      font-size: 0.95rem;
-    }
-
-    .main-content {
-      min-width: 0;
     }
 
     .hero {
@@ -260,20 +216,6 @@
       text-align: center;
     }
 
-    @media (max-width: 900px) {
-      .page-layout {
-        grid-template-columns: 1fr;
-      }
-
-      .sidebar {
-        position: static;
-      }
-
-      .sidebar-card {
-        margin-bottom: 1rem;
-      }
-    }
-
     @media (max-width: 760px) {
       .topbar {
         flex-direction: column;
@@ -311,19 +253,6 @@
   </header>
 
   <div class="container page-layout">
-    <aside class="sidebar">
-      <div class="sidebar-card">
-        <h3 class="sidebar-title">Contents</h3>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#cv">CV</a></li>
-          <li><a href="#publications">Publications &amp; Preprints</a></li>
-          <li><a href="#conferences">Conferences &amp; Seminars</a></li>
-          <li><a href="#teaching">Teaching</a></li>
-        </ul>
-      </div>
-    </aside>
-
     <main class="main-content">
       <section id="home" class="hero">
         <div class="hero-card">
