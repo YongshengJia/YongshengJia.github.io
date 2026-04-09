@@ -6,14 +6,15 @@
   <title>Yongsheng Jia | Academic Homepage</title>
   <style>
     :root {
-      --bg: #f8f9fb;
+      --bg: #f6f7fb;
       --paper: #ffffff;
       --text: #1f2937;
       --muted: #6b7280;
-      --line: #d1d5db;
+      --line: #d6d9e0;
       --accent: #1d4ed8;
-      --accent-soft: #dbeafe;
-      --max-width: 980px;
+      --accent-soft: #eff6ff;
+      --max-width: 1180px;
+      --sidebar-width: 220px;
     }
 
     * {
@@ -29,7 +30,7 @@
       font-family: Georgia, "Times New Roman", serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.7;
+      line-height: 1.75;
     }
 
     a {
@@ -47,93 +48,102 @@
     }
 
     header {
-      background: var(--paper);
+      background: rgba(255, 255, 255, 0.96);
       border-bottom: 1px solid var(--line);
       position: sticky;
       top: 0;
       z-index: 100;
+      backdrop-filter: blur(8px);
     }
 
-    .nav {
+    .topbar {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      padding: 1rem 0;
+      align-items: center;
       gap: 1rem;
+      padding: 1rem 0;
     }
 
     .site-title {
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       font-weight: 700;
       letter-spacing: 0.02em;
       color: var(--text);
-      margin-top: 0.2rem;
+      white-space: nowrap;
     }
 
-    nav ul {
+    .topnav ul {
       display: flex;
       flex-wrap: wrap;
+      gap: 1.25rem;
       list-style: none;
-      gap: 1rem;
       margin: 0;
       padding: 0;
     }
 
-    nav li {
-      position: relative;
+    .topnav a {
+      color: var(--text);
+      font-size: 0.96rem;
     }
 
-    .nav-button {
-      background: none;
-      border: none;
+    .page-layout {
+      display: grid;
+      grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+      gap: 2rem;
+      padding: 2rem 0 4rem;
+      align-items: start;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 88px;
+      align-self: start;
+    }
+
+    .sidebar-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 1rem 1rem 1.1rem;
+    }
+
+    .sidebar-title {
+      margin: 0 0 0.8rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      margin: 0;
       padding: 0;
-      font: inherit;
+    }
+
+    .sidebar li {
+      margin-bottom: 0.5rem;
+    }
+
+    .sidebar a {
       color: var(--text);
-      cursor: pointer;
       font-size: 0.95rem;
     }
 
-    .nav-button:hover {
-      color: var(--accent);
-    }
-
-    .dropdown {
-      display: none;
-      position: absolute;
-      top: calc(100% + 0.5rem);
-      left: 0;
-      min-width: 280px;
-      background: var(--paper);
-      border: 1px solid var(--line);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
-      padding: 0.5rem 0;
-      z-index: 200;
-    }
-
-    .dropdown.show {
-      display: block;
-    }
-
-    .dropdown a {
-      display: block;
-      padding: 0.55rem 0.9rem;
-      color: var(--text);
-      font-size: 0.92rem;
-      line-height: 1.4;
-    }
-
-    .dropdown a:hover {
-      background: var(--accent-soft);
-      text-decoration: none;
+    .main-content {
+      min-width: 0;
     }
 
     .hero {
-      padding: 4rem 0 3rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-card,
+    .section-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
     }
 
     .hero-card {
-      background: var(--paper);
-      border: 1px solid var(--line);
       padding: 2rem;
       display: grid;
       grid-template-columns: 220px 1fr;
@@ -146,10 +156,10 @@
       aspect-ratio: 3 / 4;
       border: 1px solid var(--line);
       background: #fafafa;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
     }
 
     .photo-box img {
@@ -160,57 +170,50 @@
     }
 
     .hero h1 {
-      margin: 0 0 0.6rem;
-      font-size: 2.2rem;
+      margin: 0 0 0.5rem;
+      font-size: 2.3rem;
       line-height: 1.2;
       font-weight: 700;
     }
 
-    .hero .subtitle {
+    .subtitle {
       color: var(--muted);
+      font-size: 1.04rem;
       margin-bottom: 1rem;
-      font-size: 1.02rem;
     }
 
-    .hero .summary {
-      margin-bottom: 1.2rem;
+    .summary {
+      margin-bottom: 1.1rem;
     }
 
     .contact-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.75rem 1.25rem;
+      gap: 0.6rem 1.25rem;
       font-size: 0.95rem;
       color: var(--muted);
     }
 
-    main {
-      padding-bottom: 4rem;
-    }
-
     section {
-      scroll-margin-top: 100px;
+      scroll-margin-top: 90px;
       margin-bottom: 1.5rem;
     }
 
     .section-card {
-      background: var(--paper);
-      border: 1px solid var(--line);
       padding: 1.8rem 2rem;
     }
 
     h2 {
       margin-top: 0;
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
+      margin-bottom: 1.1rem;
+      font-size: 1.55rem;
       border-bottom: 1px solid var(--line);
       padding-bottom: 0.55rem;
     }
 
     h3 {
-      margin-bottom: 0.35rem;
+      margin: 0 0 0.35rem;
       font-size: 1.08rem;
-      scroll-margin-top: 110px;
     }
 
     p {
@@ -222,7 +225,7 @@
     }
 
     .item {
-      margin-bottom: 1.35rem;
+      margin-bottom: 1.45rem;
     }
 
     .item:last-child {
@@ -234,23 +237,50 @@
       padding: 0;
     }
 
+    ul.clean li {
+      margin-bottom: 0.45rem;
+    }
+
     .pub-list {
-      padding-left: 1.25rem;
       margin: 0;
+      padding-left: 1.25rem;
     }
 
     .pub-list li {
-      margin-bottom: 0.9rem;
+      margin-bottom: 1rem;
     }
 
     footer {
-      padding: 2rem 0 3rem;
+      padding: 0 0 3rem;
       color: var(--muted);
       font-size: 0.92rem;
       text-align: center;
     }
 
+    @media (max-width: 900px) {
+      .page-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: static;
+      }
+
+      .sidebar-card {
+        margin-bottom: 1rem;
+      }
+    }
+
     @media (max-width: 760px) {
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .topnav ul {
+        gap: 0.75rem 1rem;
+      }
+
       .hero-card {
         grid-template-columns: 1fr;
       }
@@ -258,237 +288,173 @@
       .photo-box {
         max-width: 220px;
       }
-
-      .nav {
-        flex-direction: column;
-      }
-
-      nav ul {
-        flex-direction: column;
-        gap: 0.8rem;
-      }
-
-      .dropdown {
-        position: static;
-        margin-top: 0.5rem;
-        box-shadow: none;
-        min-width: unset;
-      }
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="container nav">
+    <div class="container topbar">
       <div class="site-title">Yongsheng Jia</div>
-      <nav>
+      <nav class="topnav">
         <ul>
           <li><a href="#home">Home</a></li>
-
-          <li class="menu-item">
-            <button class="nav-button" data-target="cv-menu">CV</button>
-            <div class="dropdown" id="cv-menu">
-              <a href="#cv">CV Overview</a>
-              <a href="#education">Education</a>
-              <a href="#awards">Awards and Honors</a>
-            </div>
-          </li>
-
-          <li class="menu-item">
-            <button class="nav-button" data-target="pub-menu">Publications and Preprints</button>
-            <div class="dropdown" id="pub-menu">
-              <a href="#publications">Publications and Preprints</a>
-              <a href="#paper1">Balanced curves, quasimorphisms, and the equator conjecture</a>
-              <a href="#paper2">Fine projection complex and subsurface homeomorphisms with positive stable commutator length</a>
-            </div>
-          </li>
-
-          <li class="menu-item">
-            <button class="nav-button" data-target="conf-menu">Conferences and Seminars</button>
-            <div class="dropdown" id="conf-menu">
-              <a href="#conferences">Conferences and Seminars</a>
-              <a href="#talks">Talks and Seminars</a>
-              <a href="#posters">Conference Presentations and Posters</a>
-            </div>
-          </li>
-
-          <li class="menu-item">
-            <button class="nav-button" data-target="teach-menu">Teaching</button>
-            <div class="dropdown" id="teach-menu">
-              <a href="#teaching">Teaching</a>
-            </div>
-          </li>
+          <li><a href="#cv">CV</a></li>
+          <li><a href="#publications">Publications &amp; Preprints</a></li>
+          <li><a href="#conferences">Conferences &amp; Seminars</a></li>
+          <li><a href="#teaching">Teaching</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <main class="container">
-    <section id="home" class="hero">
-      <div class="hero-card">
-        <div class="photo-box">
-          <img src="Yongsheng Jia.jpg" alt="Yongsheng Jia" />
-        </div>
+  <div class="container page-layout">
+    <aside class="sidebar">
+      <div class="sidebar-card">
+        <h3 class="sidebar-title">Contents</h3>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#cv">CV</a></li>
+          <li><a href="#publications">Publications &amp; Preprints</a></li>
+          <li><a href="#conferences">Conferences &amp; Seminars</a></li>
+          <li><a href="#teaching">Teaching</a></li>
+        </ul>
+      </div>
+    </aside>
 
-        <div>
-          <h1>Yongsheng Jia</h1>
-          <div class="subtitle">PhD in Pure Mathematics, The University of Manchester</div>
-          <p class="summary">
-            Welcome to my academic homepage. I am a PhD student in Pure Mathematics at
-            The University of Manchester. My research lies in geometric group theory and its connections with
-            low-dimensional topology, surface dynamics, and symplectic geometry.
-            I am particularly interested in understanding groups arising from dynamics
-            and symplectic geometry through their actions on hyperbolic spaces.
-            Recently, I have been increasingly attracted to the interactions between
-            geometric group theory and probability, with a special focus on random walks
-            on groups via their actions on hyperbolic spaces.
-          </p>
-          <div class="contact-list">
-            <span>Email: <a href="mailto:yongsheng.jia@student.manchester.ac.uk">yongsheng.jia@student.manchester.ac.uk</a></span>
-            <span>Address: Alan Turing Building, Oxford Road, Manchester, UK</span>
+    <main class="main-content">
+      <section id="home" class="hero">
+        <div class="hero-card">
+          <div class="photo-box">
+            <img src="Yongsheng Jia.jpg" alt="Yongsheng Jia" />
+          </div>
+
+          <div>
+            <h1>Yongsheng Jia</h1>
+            <div class="subtitle">PhD in Pure Mathematics, The University of Manchester</div>
+            <p class="summary">
+              Welcome to my academic homepage. I am a PhD student in Pure Mathematics at
+              The University of Manchester. My research lies in geometric group theory and its connections with
+              low-dimensional topology, surface dynamics, and symplectic geometry.
+              I am particularly interested in understanding groups arising from dynamics
+              and symplectic geometry through their actions on hyperbolic spaces.
+              Recently, I have been increasingly attracted to the interactions between
+              geometric group theory and probability, with a special focus on random walks
+              on groups via their actions on hyperbolic spaces.
+            </p>
+            <div class="contact-list">
+              <span>Email: <a href="mailto:yongsheng.jia@student.manchester.ac.uk">yongsheng.jia@student.manchester.ac.uk</a></span>
+              <span>Address: Alan Turing Building, Oxford Road, Manchester, UK</span>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="cv">
-      <div class="section-card">
-        <h2>CV</h2>
+      <section id="cv">
+        <div class="section-card">
+          <h2>CV</h2>
 
-        <div class="item">
-          <h3 id="education">Education</h3>
-          <ul class="clean">
+          <div class="item">
+            <h3>Education</h3>
+            <ul class="clean">
+              <li>
+                PhD in Pure Mathematics, The University of Manchester, 2021–2026<br>
+                <span class="muted">Supervisor: Dr Richard Webb, Co-supervisor: Prof. Peter Symonds. Thesis: <em>Combinatorial tools for Hamiltonian diffeomorphisms of the two-sphere</em>.</span>
+              </li>
+              <li>
+                MSc in Mathematical Sciences, University of Oxford, 2020–2021<br>
+                <span class="muted">Advisor: Prof. Panos Papazoglou. Thesis: <em>Asymptotic dimension and boundaries of hyperbolic groups</em>.</span>
+              </li>
+              <li>
+                BSc in Pure Mathematics, The University of Manchester, 2018–2020<br>
+                <span class="muted">Advisor: Prof. Mark Kambites. Thesis: <em>Topics on amenable groups</em>.</span>
+              </li>
+              <li>
+                BSc in Pure Mathematics, Shandong University, 2016–2020<br>
+                <span class="muted">2+2 programme with two years in Manchester.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="item">
+            <h3>Awards and Honors</h3>
+            <ul class="clean">
+              <li>EPSRC Doctoral Training Partnership, 2021–2025</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="publications">
+        <div class="section-card">
+          <h2>Publications and Preprints</h2>
+          <ol class="pub-list">
             <li>
-              PhD in Pure Mathematics, The University of Manchester, 2021–2026<br>
-              <span class="muted">Supervisor: Dr Richard Webb, Co-supervisor: Prof. Peter Symonds. Thesis: <em>Combinatorial tools for Hamiltonian diffeomorphisms of the two-sphere</em>.</span>
+              <strong>Yongsheng Jia</strong> and Richard Webb.
+              <a href="https://arxiv.org/abs/2511.22698" target="_blank" rel="noopener noreferrer">
+                “Balanced curves, quasimorphisms, and the equator conjecture.”
+              </a>
+              <em>arXiv preprint</em>, 2025.
             </li>
             <li>
-              MSc in Mathematical Sciences, University of Oxford, 2020–2021<br>
-              <span class="muted">Advisor: Prof. Panos Papazoglou. Thesis: <em>Asymptotic dimension and boundaries of hyperbolic groups</em>.</span>
+              <strong>Yongsheng Jia</strong> and Yusen Long.
+              “Fine projection complex and subsurface homeomorphisms with positive stable commutator length.”
+              <em>In preparation.</em>
             </li>
-            <li>
-              BSc in Pure Mathematics, The University of Manchester, 2018–2020<br>
-              <span class="muted">Advisor: Prof. Mark Kambites. Thesis: <em>Topics on amenable groups</em>.</span>
-            </li>
-            <li>
-              BSc in Pure Mathematics, Shandong University, 2016–2020<br>
-              <span class="muted">2+2 programme with two years in Manchester.</span>
-            </li>
-          </ul>
+          </ol>
         </div>
+      </section>
 
-        <div class="item">
-          <h3 id="awards">Awards and Honors</h3>
-          <ul class="clean">
-            <li>EPSRC Doctoral Training Partnership, 2021–2025</li>
-          </ul>
+      <section id="conferences">
+        <div class="section-card">
+          <h2>Conferences and Seminars</h2>
+
+          <div class="item">
+            <h3>Seminar Talks</h3>
+            <ul class="clean">
+              <li>“Balanced curves, quasimorphisms and the equator conjecture,” Geometric Group Theory Seminar, Purdue University, online, February 9, 2026.</li>
+              <li>“Balanced curves, quasimorphisms and the equator conjecture,” Oberseminar Geometrie, Ludwig-Maximilians-Universität München, Munich, January 23, 2026.</li>
+              <li>“A geometric group theoretic tool to study the group of Hamiltonian diffeomorphisms of the 2-sphere,” Dynamical Systems Seminar, Chern Institute of Mathematics, online, December 26, 2025.</li>
+              <li>“Quasimorphisms on Diff₀(S², area),” Dynamical Systems and Analysis Seminar, The University of Manchester, November 11, 2024.</li>
+            </ul>
+          </div>
+
+          <div class="item">
+            <h3>Conference Presentations and Posters</h3>
+            <ul class="clean">
+              <li>Lightning talk: “A geometric group theoretic tool to study Ham(S²),” The International Conference on Advanced Topics in Dynamical Systems, Chern Institute of Mathematics, Tianjin, October 20–24, 2025.</li>
+              <li>Poster: “Quasimorphisms on Diff₀(S², area),” Actions on Graphs and Metric Spaces, Isaac Newton Institute, Cambridge, September 1–5, 2025.</li>
+              <li>Poster: “Quasimorphisms on Diff₀(S², area),” Young Geometric Group Theory XIII, The University of Copenhagen, April 7–11, 2025.</li>
+              <li>Lightning talk: “GGT meets symplectic geometry,” 75th British Mathematical Colloquium, The University of Manchester, June 17–20, 2024.</li>
+              <li>Lightning talk on “Bestvina-Fujiwara Machinery,” Graduate School on Geometric Group Theory and Low-Dimensional Topology, ICMAT, Madrid, May 2022.</li>
+            </ul>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="publications">
-      <div class="section-card">
-        <h2>Publications and Preprints</h2>
-        <ol class="pub-list">
-          <li id="paper1">
-            <strong>Yongsheng Jia</strong> and Richard Webb.
-            <a href="https://arxiv.org/abs/2511.22698" target="_blank" rel="noopener noreferrer">
-              “Balanced curves, quasimorphisms, and the equator conjecture.”
-            </a>
-            <em>arXiv preprint</em>, 2025.
-          </li>
-          <li id="paper2">
-            <strong>Yongsheng Jia</strong> and Yusen Long.
-            “Fine projection complex and subsurface homeomorphisms with positive stable commutator length.”
-            <em>In preparation.</em>
-          </li>
-        </ol>
-      </div>
-    </section>
+      <section id="teaching">
+        <div class="section-card">
+          <h2>Teaching</h2>
 
-    <section id="conferences">
-      <div class="section-card">
-        <h2>Conferences and Seminars</h2>
-
-        <div class="item">
-          <h3 id="talks">Talks and Seminars</h3>
-          <ul class="clean">
-            <li>“Balanced curves, quasimorphisms and the equator conjecture,” Geometric Group Theory Seminar, Purdue University, online, February 9, 2026.</li>
-            <li>“Balanced curves, quasimorphisms and the equator conjecture,” Oberseminar Geometrie, Ludwig-Maximilians-Universität München, Munich, January 23, 2026.</li>
-            <li>“A geometric group theoretic tool to study the group of Hamiltonian diffeomorphisms of the 2-sphere,” Dynamical Systems Seminar, Chern Institute of Mathematics, online, December 26, 2025.</li>
-            <li>“Quasimorphisms on Diff₀(S², area),” Dynamical Systems and Analysis Seminar, The University of Manchester, November 11, 2024.</li>
-            <li>Lightning talk: “GGT meets symplectic geometry,” 75th British Mathematical Colloquium, The University of Manchester, June 17–20, 2024.</li>
-            <li>Lightning talk on “Bestvina-Fujiwara Machinery,” Graduate School on Geometric Group Theory and Low-Dimensional Topology, ICMAT, Madrid, May 2022.</li>
-          </ul>
+          <div class="item">
+            <h3>Teaching</h3>
+            <ul class="clean">
+              <li>Probability 1, The University of Manchester, Semester 1, 2022–2023 <span class="muted">(Leading)</span></li>
+              <li>Algebraic Structure 2, The University of Manchester, Semester 2, 2022–2023 <span class="muted">(Assisting)</span></li>
+              <li>Sequences and Series, The University of Manchester, Semester 1, 2023–2024 <span class="muted">(Assisting)</span></li>
+              <li>Introduction to Financial Mathematics, The University of Manchester, Semester 2, 2023–2024 <span class="muted">(Assisting)</span></li>
+              <li>Mathematical Problem Solving, The University of Manchester, Semester 1, 2024–2025 <span class="muted">(Assisting)</span></li>
+              <li>Mathematics for EEE, The University of Manchester, Semester 1, 2024–2025 <span class="muted">(Leading)</span></li>
+            </ul>
+          </div>
         </div>
-
-        <div class="item">
-          <h3 id="posters">Conference Presentations and Posters</h3>
-          <ul class="clean">
-            <li>Lightning talk: “A geometric group theoretic tool to study Ham(S²),” The International Conference on Advanced Topics in Dynamical Systems, Chern Institute of Mathematics, Tianjin, October 20–24, 2025.</li>
-            <li>Poster: “Quasimorphisms on Diff₀(S², area),” Actions on Graphs and Metric Spaces, Isaac Newton Institute, Cambridge, September 1–5, 2025.</li>
-            <li>Poster: “Quasimorphisms on Diff₀(S², area),” Young Geometric Group Theory XIII, The University of Copenhagen, April 7–11, 2025.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="teaching">
-      <div class="section-card">
-        <h2>Teaching</h2>
-        <div class="item">
-          <h3>Teaching</h3>
-          <ul class="clean">
-            <li>Probability 1, The University of Manchester, Semester 1, 2022–2023 <span class="muted">(Leading)</span></li>
-            <li>Algebraic Structure 2, The University of Manchester, Semester 2, 2022–2023 <span class="muted">(Assisting)</span></li>
-            <li>Sequences and Series, The University of Manchester, Semester 1, 2023–2024 <span class="muted">(Assisting)</span></li>
-            <li>Introduction to Financial Mathematics, The University of Manchester, Semester 2, 2023–2024 <span class="muted">(Assisting)</span></li>
-            <li>Mathematical Problem Solving, The University of Manchester, Semester 1, 2024–2025 <span class="muted">(Assisting)</span></li>
-            <li>Mathematics for EEE, The University of Manchester, Semester 1, 2024–2025 <span class="muted">(Leading)</span></li>
-          </ul>
-        </div>
-      </div>
-    </section>
-  </main>
+      </section>
+    </main>
+  </div>
 
   <footer>
     <div class="container">
       Last updated: April 2026
     </div>
   </footer>
-
-  <script>
-    const buttons = document.querySelectorAll(".nav-button");
-    const dropdowns = document.querySelectorAll(".dropdown");
-
-    function closeAllMenus() {
-      dropdowns.forEach(menu => menu.classList.remove("show"));
-    }
-
-    buttons.forEach(button => {
-      button.addEventListener("click", function (event) {
-        event.stopPropagation();
-        const targetId = this.getAttribute("data-target");
-        const targetMenu = document.getElementById(targetId);
-        const isOpen = targetMenu.classList.contains("show");
-
-        closeAllMenus();
-
-        if (!isOpen) {
-          targetMenu.classList.add("show");
-        }
-      });
-    });
-
-    dropdowns.forEach(menu => {
-      menu.addEventListener("click", function (event) {
-        event.stopPropagation();
-      });
-    });
-
-    document.addEventListener("click", function () {
-      closeAllMenus();
-    });
-  </script>
 </body>
 </html>
