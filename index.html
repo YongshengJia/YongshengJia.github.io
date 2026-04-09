@@ -51,13 +51,13 @@
       border-bottom: 1px solid var(--line);
       position: sticky;
       top: 0;
-      z-index: 50;
+      z-index: 100;
     }
 
     .nav {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-start;
       padding: 1rem 0;
       gap: 1rem;
     }
@@ -67,6 +67,7 @@
       font-weight: 700;
       letter-spacing: 0.02em;
       color: var(--text);
+      margin-top: 0.2rem;
     }
 
     nav ul {
@@ -78,9 +79,52 @@
       padding: 0;
     }
 
-    nav a {
+    nav li {
+      position: relative;
+    }
+
+    .nav-button {
+      background: none;
+      border: none;
+      padding: 0;
+      font: inherit;
       color: var(--text);
+      cursor: pointer;
       font-size: 0.95rem;
+    }
+
+    .nav-button:hover {
+      color: var(--accent);
+    }
+
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 0.5rem);
+      left: 0;
+      min-width: 280px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+      padding: 0.5rem 0;
+      z-index: 200;
+    }
+
+    .dropdown.show {
+      display: block;
+    }
+
+    .dropdown a {
+      display: block;
+      padding: 0.55rem 0.9rem;
+      color: var(--text);
+      font-size: 0.92rem;
+      line-height: 1.4;
+    }
+
+    .dropdown a:hover {
+      background: var(--accent-soft);
+      text-decoration: none;
     }
 
     .hero {
@@ -145,7 +189,7 @@
     }
 
     section {
-      scroll-margin-top: 88px;
+      scroll-margin-top: 100px;
       margin-bottom: 1.5rem;
     }
 
@@ -166,6 +210,7 @@
     h3 {
       margin-bottom: 0.35rem;
       font-size: 1.08rem;
+      scroll-margin-top: 110px;
     }
 
     p {
@@ -174,15 +219,6 @@
 
     .muted {
       color: var(--muted);
-    }
-
-    .cv-download {
-      display: inline-block;
-      padding: 0.55rem 0.95rem;
-      border: 1px solid var(--accent);
-      background: var(--accent-soft);
-      font-size: 0.95rem;
-      margin-bottom: 1rem;
     }
 
     .item {
@@ -224,8 +260,19 @@
       }
 
       .nav {
-        align-items: flex-start;
         flex-direction: column;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+
+      .dropdown {
+        position: static;
+        margin-top: 0.5rem;
+        box-shadow: none;
+        min-width: unset;
       }
     }
   </style>
@@ -237,10 +284,40 @@
       <nav>
         <ul>
           <li><a href="#home">Home</a></li>
-          <li><a href="#cv">CV</a></li>
-          <li><a href="#publications">Publications and Preprints</a></li>
-          <li><a href="#conferences">Conferences and Seminars</a></li>
-          <li><a href="#teaching">Teaching</a></li>
+
+          <li class="menu-item">
+            <button class="nav-button" data-target="cv-menu">CV</button>
+            <div class="dropdown" id="cv-menu">
+              <a href="#cv">CV Overview</a>
+              <a href="#education">Education</a>
+              <a href="#awards">Awards and Honors</a>
+            </div>
+          </li>
+
+          <li class="menu-item">
+            <button class="nav-button" data-target="pub-menu">Publications and Preprints</button>
+            <div class="dropdown" id="pub-menu">
+              <a href="#publications">Publications and Preprints</a>
+              <a href="#paper1">Balanced curves, quasimorphisms, and the equator conjecture</a>
+              <a href="#paper2">Fine projection complex and subsurface homeomorphisms with positive stable commutator length</a>
+            </div>
+          </li>
+
+          <li class="menu-item">
+            <button class="nav-button" data-target="conf-menu">Conferences and Seminars</button>
+            <div class="dropdown" id="conf-menu">
+              <a href="#conferences">Conferences and Seminars</a>
+              <a href="#talks">Talks and Seminars</a>
+              <a href="#posters">Conference Presentations and Posters</a>
+            </div>
+          </li>
+
+          <li class="menu-item">
+            <button class="nav-button" data-target="teach-menu">Teaching</button>
+            <div class="dropdown" id="teach-menu">
+              <a href="#teaching">Teaching</a>
+            </div>
+          </li>
         </ul>
       </nav>
     </div>
@@ -257,8 +334,8 @@
           <h1>Yongsheng Jia</h1>
           <div class="subtitle">PhD in Pure Mathematics, The University of Manchester</div>
           <p class="summary">
-            Welcome to my academic homepage. I am a PhD student in Pure Mathematics at 
-            The University of Manchester.  My research lies in geometric group theory and its connections with
+            Welcome to my academic homepage. I am a PhD student in Pure Mathematics at
+            The University of Manchester. My research lies in geometric group theory and its connections with
             low-dimensional topology, surface dynamics, and symplectic geometry.
             I am particularly interested in understanding groups arising from dynamics
             and symplectic geometry through their actions on hyperbolic spaces.
@@ -275,8 +352,11 @@
     </section>
 
     <section id="cv">
+      <div class="section-card">
+        <h2>CV</h2>
+
         <div class="item">
-          <h3>Education</h3>
+          <h3 id="education">Education</h3>
           <ul class="clean">
             <li>
               PhD in Pure Mathematics, The University of Manchester, 2021–2026<br>
@@ -298,7 +378,7 @@
         </div>
 
         <div class="item">
-          <h3>Awards and Honors</h3>
+          <h3 id="awards">Awards and Honors</h3>
           <ul class="clean">
             <li>EPSRC Doctoral Training Partnership, 2021–2025</li>
           </ul>
@@ -310,19 +390,28 @@
       <div class="section-card">
         <h2>Publications and Preprints</h2>
         <ol class="pub-list">
-          <li>
+          <li id="paper1">
             <strong>Yongsheng Jia</strong> and Richard Webb.
-            “Balanced curves, quasimorphisms, and the equator conjecture.”
+            <a href="https://arxiv.org/abs/2511.22698" target="_blank" rel="noopener noreferrer">
+              “Balanced curves, quasimorphisms, and the equator conjecture.”
+            </a>
             <em>arXiv preprint</em>, 2025.
+          </li>
+          <li id="paper2">
+            <strong>Yongsheng Jia</strong> and Yusen Long.
+            “Fine projection complex and subsurface homeomorphisms with positive stable commutator length.”
+            <em>In preparation.</em>
           </li>
         </ol>
       </div>
     </section>
 
     <section id="conferences">
+      <div class="section-card">
+        <h2>Conferences and Seminars</h2>
 
         <div class="item">
-          <h3>Talks and Seminars</h3>
+          <h3 id="talks">Talks and Seminars</h3>
           <ul class="clean">
             <li>“Balanced curves, quasimorphisms and the equator conjecture,” Geometric Group Theory Seminar, Purdue University, online, February 9, 2026.</li>
             <li>“Balanced curves, quasimorphisms and the equator conjecture,” Oberseminar Geometrie, Ludwig-Maximilians-Universität München, Munich, January 23, 2026.</li>
@@ -334,7 +423,7 @@
         </div>
 
         <div class="item">
-          <h3>Conference Presentations and Posters</h3>
+          <h3 id="posters">Conference Presentations and Posters</h3>
           <ul class="clean">
             <li>Lightning talk: “A geometric group theoretic tool to study Ham(S²),” The International Conference on Advanced Topics in Dynamical Systems, Chern Institute of Mathematics, Tianjin, October 20–24, 2025.</li>
             <li>Poster: “Quasimorphisms on Diff₀(S², area),” Actions on Graphs and Metric Spaces, Isaac Newton Institute, Cambridge, September 1–5, 2025.</li>
@@ -345,6 +434,8 @@
     </section>
 
     <section id="teaching">
+      <div class="section-card">
+        <h2>Teaching</h2>
         <div class="item">
           <h3>Teaching</h3>
           <ul class="clean">
@@ -365,5 +456,39 @@
       Last updated: April 2026
     </div>
   </footer>
+
+  <script>
+    const buttons = document.querySelectorAll(".nav-button");
+    const dropdowns = document.querySelectorAll(".dropdown");
+
+    function closeAllMenus() {
+      dropdowns.forEach(menu => menu.classList.remove("show"));
+    }
+
+    buttons.forEach(button => {
+      button.addEventListener("click", function (event) {
+        event.stopPropagation();
+        const targetId = this.getAttribute("data-target");
+        const targetMenu = document.getElementById(targetId);
+        const isOpen = targetMenu.classList.contains("show");
+
+        closeAllMenus();
+
+        if (!isOpen) {
+          targetMenu.classList.add("show");
+        }
+      });
+    });
+
+    dropdowns.forEach(menu => {
+      menu.addEventListener("click", function (event) {
+        event.stopPropagation();
+      });
+    });
+
+    document.addEventListener("click", function () {
+      closeAllMenus();
+    });
+  </script>
 </body>
 </html>
